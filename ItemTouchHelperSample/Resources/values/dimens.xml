@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <dimen name="item_horizontal_padding">16dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+  <dimen name="elevation_fab">10dp</dimen>
+</resources>

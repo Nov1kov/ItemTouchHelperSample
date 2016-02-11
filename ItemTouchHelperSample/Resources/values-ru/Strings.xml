@@ -2,6 +2,6 @@
 <resources>
   <string name="ApplicationName">ItemTouchHelperSample</string>
 
-  <string name="MainActivityLabel">Contacts list</string>
+  <string name="MainActivityLabel">Лист контактов</string>
     
 </resources>

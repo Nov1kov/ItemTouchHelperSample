@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <style name="MyTheme" parent="MyTheme.Base">
+  </style>
+
+  <!-- Base theme applied no matter what API -->
+  <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowNoTitle">true</item>
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">false</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette-->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/primary</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/primary_dark</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">@color/accent</item>
+  </style>
+
+  <style name="FabStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_margin">@dimen/spacing_large</item>
+    <item name="android:clickable">true</item>
+    <item name="backgroundTint">@color/accent</item>
+    <item name="borderWidth">0dp</item>
+    <item name="elevation">@dimen/elevation_fab</item>
+    <item name="pressedTranslationZ">12dp</item>
+    <item name="rippleColor">@android:color/white</item>
+  </style>
+
+
+  <style name="MaterialHorizontalItem">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:paddingLeft">@dimen/item_horizontal_padding</item>
+    <item name="android:paddingRight">@dimen/item_horizontal_padding</item>
+  </style>
+  
+</resources>

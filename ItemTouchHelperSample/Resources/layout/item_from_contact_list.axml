@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/frameLayout1">
+    <LinearLayout
+        android:id="@+id/backgroundView"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        android:visibility="gone">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:text="Connect Note"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/noteTextView" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:id="@+id/linearLayout3">
+            <TextView
+                android:text="Connect Task"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="15dp"
+                android:id="@+id/taskTextView" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/frontView"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:id="@+id/contactImageView" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textName" />
+            <TextView
+                android:text="Small Text"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textInfo" />
+        </LinearLayout>
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="-60dp"
+            android:id="@+id/contactCheck" />
+    </LinearLayout>
+</FrameLayout>
