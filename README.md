@@ -7,4 +7,4 @@ example ItemTouchHelper in recyclerview on Xamarin
 * Android Support Library
 * Android Support RecyclerView
 
-<iframe src='https://gfycat.com/ifr/VigilantGoldenGazelle' frameborder='0' scrolling='no' width='640' height='1067' allowfullscreen></iframe>
+![](https://fat.gfycat.com/VigilantGoldenGazelle.gif)
