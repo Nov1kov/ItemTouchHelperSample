@@ -1,7 +1,11 @@
-﻿using Android.Graphics;
+﻿using System.Threading;
+using Android.Graphics;
+using Android.OS;
+using Android.Provider;
 using Android.Support.V7.Widget;
 using Android.Support.V7.Widget.Helper;
 using ItemTouchHelperSampleAndroid.ContactsList.Holder;
+using Java.Lang;
 
 namespace ItemTouchHelperSampleAndroid.ContactsList
 {
@@ -63,7 +67,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
 
         public override void OnSwiped(RecyclerView.ViewHolder p0, int p1)
         {
-
+            
             if (p1 == ItemTouchHelper.Start)
             {
                 _swipeListener.SwipeLeft(p0.AdapterPosition);
@@ -72,22 +76,23 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
             {
                 _swipeListener.SwipeRight(p0.AdapterPosition);
             }
+
+            _adapter.OnItemDismiss(p0.AdapterPosition);
+            /*
+            Handler handler = new Handler();
+            Runnable runnable = new Runnable(() =>
+            {
+                _adapter.OnItemDismiss(p0.AdapterPosition);
+            });
+            handler.PostDelayed(runnable, 300);*/
+
+            IContactViewHolder itemViewHolder = (IContactViewHolder) p0;
+            itemViewHolder.SwipeHolder(p1);
         }
 
-        public override bool IsItemViewSwipeEnabled
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool IsItemViewSwipeEnabled => true;
 
-        public override bool IsLongPressDragEnabled
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool IsLongPressDragEnabled => true;
     }
+
 }

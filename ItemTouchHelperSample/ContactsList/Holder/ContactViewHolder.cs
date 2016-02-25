@@ -1,4 +1,6 @@
 ﻿using System;
+using Android.Content.Res;
+using Android.Support.V4.Content;
 using Android.Support.V4.View;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -10,68 +12,69 @@ namespace ItemTouchHelperSampleAndroid.ContactsList.Holder
     public class ContactViewHolder : RecyclerView.ViewHolder,
          IContactViewHolder
     {
-        public TextView textName { get; set; }
-        public TextView textInfo { get; set; }
-        public ImageView contactImageView { get; set; }
-        public ImageView contactCheck { get; set; }
+        public TextView TextName { get; set; }
+        public TextView TextInfo { get; set; }
+        public ImageView ContactImageView { get; set; }
+        public ImageView ContactCheck { get; set; }
 
-        private View BackgroundView { get; set; }
-        private View FrontView { get; set; }
-        private TextView NoteTextView { get; set; }
-        private TextView TaskTextView { get; set; }
+        private View BackgroundView { get; }
+        private View FrontView { get; }
+        private View NoteTextView { get; }
+        private View TaskTextView { get; }
+
+        private const int MoveDist = 10;
 
         enum Moving
         {
             Left, Right, Unknown
         }
 
-        private Moving HolderMove;
+        private Moving _holderMove;
 
         public ContactViewHolder(View view, Action<int> listener)
             : base(view)
         {
-            contactImageView = view.FindViewById<ImageView>(Resource.Id.contactImageView);
-            contactCheck = view.FindViewById<ImageView>(Resource.Id.contactCheck);
-            textName = view.FindViewById<TextView>(Resource.Id.textName);
-            textInfo = view.FindViewById<TextView>(Resource.Id.textInfo);
+            ContactImageView = view.FindViewById<ImageView>(Resource.Id.contactImageView);
+            ContactCheck = view.FindViewById<ImageView>(Resource.Id.contactCheck);
+            TextName = view.FindViewById<TextView>(Resource.Id.textName);
+            TextInfo = view.FindViewById<TextView>(Resource.Id.textInfo);
             FrontView = view.FindViewById<View>(Resource.Id.frontView);
             BackgroundView = view.FindViewById<View>(Resource.Id.backgroundView);
+            
+            FrontView.Background = ContextCompat.GetDrawable(view.Context, Resource.Drawable.contact_item_gradient_right);
+            _holderMove = Moving.Unknown;
 
-            FrontView.Background = view.Context.Resources.GetDrawable(
-                Resource.Drawable.contact_item_gradient_right);
-            HolderMove = Moving.Unknown;
-
-            NoteTextView = view.FindViewById<TextView>(Resource.Id.noteTextView);
-            TaskTextView = view.FindViewById<TextView>(Resource.Id.taskTextView);
+            NoteTextView = view.FindViewById<View>(Resource.Id.noteImageView);
+            TaskTextView = view.FindViewById<View>(Resource.Id.taskImageView);
             view.Click += (sender, e) => listener(base.AdapterPosition);
         }
 
         public void MoveFrontView(float x)
         {
-            if (x < 0 && (HolderMove == Moving.Right || HolderMove == Moving.Unknown))
+            if (x < -MoveDist && (_holderMove == Moving.Right || _holderMove == Moving.Unknown))
             {
 
-                if (HolderMove == Moving.Unknown)
+                if (_holderMove == Moving.Unknown)
                 {
-                    HolderMove = Moving.Left;
+                    _holderMove = Moving.Left;
                     ResetAnimation();
                 }
                 else
                 {
-                    HolderMove = Moving.Left;
+                    _holderMove = Moving.Left;
                     SwitchColorBackGround();
                 }
             }
-            else if (x > 0 && (HolderMove == Moving.Left || HolderMove == Moving.Unknown))
+            else if (x > MoveDist && (_holderMove == Moving.Left || _holderMove == Moving.Unknown))
             {
-                if (HolderMove == Moving.Unknown)
+                if (_holderMove == Moving.Unknown)
                 {
-                    HolderMove = Moving.Right;
+                    _holderMove = Moving.Right;
                     ResetAnimation();
                 }
                 else
                 {
-                    HolderMove = Moving.Right;
+                    _holderMove = Moving.Right;
                     SwitchColorBackGround();
                 }
             }
@@ -101,7 +104,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList.Holder
         private void SetBackGroundColor()
         {
             BackgroundView.Visibility = ViewStates.Visible;
-            switch (HolderMove)
+            switch (_holderMove)
             {
                 case Moving.Left:
                     NoteTextView.Visibility = ViewStates.Invisible;
@@ -120,7 +123,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList.Holder
 
         public void SelectedHolderSwipe()
         {
-            HolderMove = Moving.Unknown;
+            _holderMove = Moving.Unknown;
         }
 
         public void UnSelectedHolderSwipe()
@@ -132,8 +135,16 @@ namespace ItemTouchHelperSampleAndroid.ContactsList.Holder
                 BackgroundView.Visibility = ViewStates.Gone;
             };
             BackgroundView.StartAnimation(alphaAnim);
-
+            
         }
 
+        public void SwipeHolder(int p0)
+        {
+            //UnSelectedHolderSwipe();
+            //ViewCompat.SetTranslationX(FrontView, 0);
+            //TranslateAnimation animation = new TranslateAnimation(ViewCompat.GetTranslationX(BackgroundView), 0, 0, 0);
+            //BackgroundView.StartAnimation(animation);
+            //ViewCompat.Animate(BackgroundView).TranslationX(0);
+        }
     }
 }

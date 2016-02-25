@@ -24,8 +24,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
 
         public void UpdateList(IList<Contact> objects)
         {
-            if (_contacts != null)
-                _contacts.Clear();
+            _contacts?.Clear();
             _contacts = objects;
             NotifyDataSetChanged();
         }
@@ -40,10 +39,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
             return position;
         }
 
-        public override int ItemCount
-        {
-            get { return _contacts.Count; }
-        }
+        public override int ItemCount => _contacts.Count;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
@@ -61,12 +57,12 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
       
             }
 
-            h.contactCheck.SetImageResource(item.IsActive ?
+            h.ContactCheck.SetImageResource(item.IsActive ?
                 Android.Resource.Drawable.PresenceOnline :
                 Android.Resource.Drawable.PresenceOffline);
 
-            h.textName.Text = item.Title;
-            h.textInfo.Text = item.CompanyIs;
+            h.TextName.Text = item.Title;
+            h.TextInfo.Text = item.CompanyIs;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -81,8 +77,7 @@ namespace ItemTouchHelperSampleAndroid.ContactsList
 
         void OnClick(int position)
         {
-            if (ItemClick != null)
-                ItemClick(this, position);
+            ItemClick?.Invoke(this, position);
         }
 
         #region IItemTouchHelperAdapter

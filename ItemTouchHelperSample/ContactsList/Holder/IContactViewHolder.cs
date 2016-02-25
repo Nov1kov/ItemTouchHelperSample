@@ -5,5 +5,6 @@
         void MoveFrontView(float x);
         void SelectedHolderSwipe();
         void UnSelectedHolderSwipe();
+        void SwipeHolder(int p0);
     }
 }

@@ -67,11 +67,13 @@ namespace ItemTouchHelperSampleAndroid
         public void SwipeLeft(int itemId)
         {
             Toast.MakeText(this, "тут мы улетаем в другой экран", ToastLength.Short).Show();
+           // _adapter.NotifyItemChanged(itemId);
         }
 
         public void SwipeRight(int itemId)
         {
             Toast.MakeText(this, "тут мы улетаем в другой экран", ToastLength.Short).Show();
+            //_adapter.NotifyItemChanged(itemId);
         }
     }
 }

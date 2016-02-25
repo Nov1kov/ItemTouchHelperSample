@@ -6,16 +6,18 @@ namespace ItemTouchHelperSampleAndroid.DataLayer
 {
     public class MockRepository : IRepository
     {
-        public IEnumerable<Contact> GetContacts()
+        private List<Contact> _listContacts;
+
+        public MockRepository()
         {
-            List<Contact> listContacts = new List<Contact>
+            _listContacts = new List<Contact>
             {
                 new Contact()
                 {
                     CompanyIs = "ГК «Росатом»",
                     IsActive = true,
                     Title = "Василий Петрович",
-                    
+
                 },
                 new Contact()
                 {
@@ -75,10 +77,11 @@ namespace ItemTouchHelperSampleAndroid.DataLayer
                 },
 
             };
+        }
 
-            return listContacts;
-
-
+        public IEnumerable<Contact> GetContacts()
+        {
+            return _listContacts;
         }
 
         public IEnumerable<Task> GetTasks(Contact contact)

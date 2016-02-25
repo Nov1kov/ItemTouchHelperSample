@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  
+  <style name="FabStyle"  parent="@style/BaseFabStyle">
+    <item name="android:layout_margin">@dimen/spacing_large</item>
+  </style>
+  
+</resources>

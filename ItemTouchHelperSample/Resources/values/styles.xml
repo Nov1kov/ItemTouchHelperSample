@@ -18,10 +18,9 @@
     <item name="colorAccent">@color/accent</item>
   </style>
 
-  <style name="FabStyle">
+  <style name="BaseFabStyle">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_margin">@dimen/spacing_large</item>
     <item name="android:clickable">true</item>
     <item name="backgroundTint">@color/accent</item>
     <item name="borderWidth">0dp</item>
@@ -30,12 +29,19 @@
     <item name="rippleColor">@android:color/white</item>
   </style>
 
+  <style name="FabStyle" parent="@style/BaseFabStyle">
+    <item name="android:layout_marginRight">0dp</item>
+    <item name="android:layout_marginTop">0dp</item>
+    <item name="android:layout_marginLeft">0dp</item>
+    <item name="android:layout_marginBottom">0dp</item>
+  </style>
+
 
   <style name="MaterialHorizontalItem">
-    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_height">fill_parent</item>
     <item name="android:layout_width">fill_parent</item>
     <item name="android:paddingLeft">@dimen/item_horizontal_padding</item>
     <item name="android:paddingRight">@dimen/item_horizontal_padding</item>
   </style>
-  
+
 </resources>

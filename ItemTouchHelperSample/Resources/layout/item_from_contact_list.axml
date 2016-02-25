@@ -1,68 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/item_height"
     android:id="@+id/frameLayout1">
     <LinearLayout
         android:id="@+id/backgroundView"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="2"
+        android:gravity="center_vertical"
+        style="@style/MaterialHorizontalItem"
         android:visibility="gone">
+        <ImageView
+            android:id="@+id/noteImageView"
+            android:src="@drawable/ic_calendar_check_black_24dp"
+            android:layout_weight="0"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:gravity="center_vertical"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:id="@+id/linearLayout2">
-            <TextView
-                android:text="Connect Note"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:layout_marginLeft="15dp"
-                android:id="@+id/noteTextView" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1"
-            android:id="@+id/linearLayout3">
-            <TextView
-                android:text="Connect Task"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:layout_marginRight="15dp"
-                android:id="@+id/taskTextView" />
-        </LinearLayout>
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/taskImageView"
+            android:src="@drawable/ic_note_black_24dp"
+            android:layout_weight="0"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/frontView"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        style="@style/MaterialHorizontalItem">
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_weight="0"
             android:id="@+id/contactImageView" />
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout1"
-            android:layout_marginLeft="10dp">
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/item_image_space_36dp">
             <TextView
                 android:text="Large Text"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -80,7 +62,9 @@
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginLeft="-60dp"
+            android:layout_marginLeft="@dimen/item_horizontal_padding"
+            android:layout_marginRight="@dimen/item_horizontal_padding"
+            android:layout_weight="0"
             android:id="@+id/contactCheck" />
     </LinearLayout>
 </FrameLayout>
